@@ -1,1 +1,6 @@
 errors.log
+.zed/
+tmp*/
+boilerplate-react-buildless/
+boilerplate-solid-ts/
+
