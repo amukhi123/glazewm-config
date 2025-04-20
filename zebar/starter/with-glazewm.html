@@ -29,8 +29,7 @@
         network: { type: 'network' },
         glazewm: { type: 'glazewm' },
         cpu: { type: 'cpu' },
-        date: { type: 'date', formatting: 'EEE d MMM t' },
-        battery: { type: 'battery' },
+        date: { type: 'date', formatting: 'EEE MMM d yyyy h:mm:ss a' },
         memory: { type: 'memory' },
         weather: { type: 'weather' },
       });
@@ -72,19 +71,6 @@
                 <i className="nf nf-md-wifi_strength_off_outline"></i>
               );
           }
-        }
-
-        // Get icon to show for how much of the battery is charged.
-        function getBatteryIcon(batteryOutput) {
-          if (batteryOutput.chargePercent > 90)
-            return <i className="nf nf-fa-battery_4"></i>;
-          if (batteryOutput.chargePercent > 70)
-            return <i className="nf nf-fa-battery_3"></i>;
-          if (batteryOutput.chargePercent > 40)
-            return <i className="nf nf-fa-battery_2"></i>;
-          if (batteryOutput.chargePercent > 20)
-            return <i className="nf nf-fa-battery_1"></i>;
-          return <i className="nf nf-fa-battery_0"></i>;
         }
 
         // Get icon to show for current weather status.
@@ -176,13 +162,6 @@
                 </>
               )}
 
-              {output.network && (
-                <div className="network">
-                  {getNetworkIcon(output.network)}
-                  {output.network.defaultGateway?.ssid}
-                </div>
-              )}
-
               {output.memory && (
                 <div className="memory">
                   <i className="nf nf-fae-chip"></i>
@@ -200,17 +179,6 @@
                   >
                     {Math.round(output.cpu.usage)}%
                   </span>
-                </div>
-              )}
-
-              {output.battery && (
-                <div className="battery">
-                  {/* Show icon for whether battery is charging. */}
-                  {output.battery.isCharging && (
-                    <i className="nf nf-md-power_plug charging-icon"></i>
-                  )}
-                  {getBatteryIcon(output.battery)}
-                  {Math.round(output.battery.chargePercent)}%
                 </div>
               )}
 
