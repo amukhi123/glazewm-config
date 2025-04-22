@@ -64,7 +64,10 @@ body,
 .network,
 .memory,
 .cpu,
-.battery {
+.battery,
+.disk,
+.network,
+.audio {
   margin-right: 20px;
 }
 
